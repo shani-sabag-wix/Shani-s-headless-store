@@ -1,0 +1,26 @@
+.products-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 0 130px;
+}
+description{
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    margin-bottom: 24px;
+    align-items: center;
+    color: brown;
+}
+
+
+product {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.image-wrapper {
+    position: relative;
+}
