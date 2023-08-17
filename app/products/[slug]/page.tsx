@@ -2,6 +2,8 @@
 import { createClient, OAuthStrategy } from '@wix/api-client';
 import { products } from '@wix/stores';
 import './page.css';
+import { ProductOption } from '@/src/components/ProductOption/ProductOption';
+import { AddToCart } from '@/src/components/AddToCart/AddToCart';
 
 const wixClient = createClient({ modules: { products } , auth: OAuthStrategy({ clientId: '174345f4-570c-4212-93a7-06e8f9d04c8f' }) });
 
@@ -23,12 +25,11 @@ export default async function Product({ params }: { params: { slug: string } }) 
             {ribbon && <div className='ribbon'>{ribbon}</div>}
         </div>
         <div>{discountedPrice} {price !== discountedPrice ? <s>{price}</s> : ''}</div>
-        <div>{product.description}</div>
-        <div>{product.manageVariants}</div>
-        <a href={`/products/${product.slug}`} className='inline-flex justify-center rounded-lg text-sm font-semibold py-3 px-4 bg-slate-900 text-white hover:bg-slate-700'>Add To Cart</a>
-
-
-
+        <div dangerouslySetInnerHTML={{__html: product.description || ''}}></div>
+        {product.productOptions?.map(productOption => 
+            <ProductOption  productOption={productOption}  />
+        )}
+        <AddToCart quantity={1} options={{}} catalogItemId={product._id!} />
     </div>
 
 }

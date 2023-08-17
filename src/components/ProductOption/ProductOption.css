@@ -1,0 +1,12 @@
+.color-choice {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 3px;
+    left: 20px;
+    border: 2px solid black;
+}
+
+.color-wrapper {
+    position: relative;
+}
